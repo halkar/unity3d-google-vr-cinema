@@ -6,14 +6,9 @@ using UnityEngine.EventSystems;
 
 public class Play : MonoBehaviour {
 
-    private Renderer myRenderer;
-
-    public Material inactiveMaterial;
-    public Material gazedAtMaterial;
-
     // Use this for initialization
     void Start () {
-        myRenderer = GetComponent<Renderer>();
+        SetGazedAt(false);
     }
 	
 	// Update is called once per frame
@@ -23,16 +18,23 @@ public class Play : MonoBehaviour {
 
     public void SetGazedAt(bool gazedAt)
     {
-        if (inactiveMaterial != null && gazedAtMaterial != null)
-        {
-            myRenderer.material = gazedAt ? gazedAtMaterial : inactiveMaterial;
-        }
+        var halo = (Behaviour)GetComponent("Halo");
+        halo.enabled = gazedAt;
     }
 
     public void OnPlay(BaseEventData data)
     {
-        var texture = data.selectedObject.GetComponent<GvrVideoPlayerTexture>();
-        texture.Play();
-        Console.Write("1");
+        var texture = GetComponent<GvrVideoPlayerTexture>();
+        if (texture.VideoReady)
+        {
+            if (texture.IsPaused)
+            {
+                texture.Play();
+            }
+            else
+            {
+                texture.Pause();
+            }
+        }
     }
 }
