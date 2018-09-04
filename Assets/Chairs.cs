@@ -20,7 +20,7 @@ public class Chairs : MonoBehaviour
 	        {
 	            var clone = Instantiate(chair, gameObject.transform);
 	            clone.transform.localRotation = new Quaternion(0, 180, 0, 1);
-	            clone.transform.localPosition = new Vector3(-0.5f + i * (1f / cols), -0.5f + j * (1f / rows), 0);
+	            clone.transform.localPosition = new Vector3(-0.45f + i * (1f / cols), -0.45f + j * (1f / rows), 0);
 	            clone.transform.localScale = new Vector3(0.04f, 0.04f, 0.2f);
 	            var meshCollider = clone.AddComponent<MeshCollider>();
 	            meshCollider.sharedMesh = mesh;
