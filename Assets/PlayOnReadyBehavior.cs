@@ -20,7 +20,7 @@ public class PlayOnReadyBehavior : MonoBehaviour {
     {
         if (eventId == (int)GvrVideoPlayerTexture.VideoEvents.VideoReady)
         {
-            //GetComponent<GvrVideoPlayerTexture>().Play();
+            GetComponent<GvrVideoPlayerTexture>().Play();
         }
     }
 }
