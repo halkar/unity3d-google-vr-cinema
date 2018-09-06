@@ -18,43 +18,47 @@ public class Chairs : MonoBehaviour
 	    {
 	        for (int j = 0; j < rows; j++)
 	        {
-	            var clone = Instantiate(chair, gameObject.transform);
-	            clone.transform.localRotation = new Quaternion(0, 180, 0, 1);
-	            clone.transform.localPosition = new Vector3(-0.45f + i * (1f / cols), -0.45f + j * (1f / rows), 0);
-	            clone.transform.localScale = new Vector3(0.04f, 0.04f, 0.2f);
-	            var meshCollider = clone.AddComponent<MeshCollider>();
+                var nestedGameObject = new GameObject();
+	            nestedGameObject.transform.parent = gameObject.transform;
+	            var clone = Instantiate(chair, nestedGameObject.transform);
+	            nestedGameObject.transform.localRotation = new Quaternion(0, 180, 0, 0);
+	            nestedGameObject.transform.localPosition = new Vector3(-0.45f + i * (1f / cols), -0.45f + j * (1f / rows), 0);
+	            nestedGameObject.transform.localScale = new Vector3(0.04f, 0.04f, 0.2f);
+	            clone.transform.localPosition = new Vector3(0, 0, 0);
+                clone.transform.localEulerAngles = new Vector3(10, 0, 0);
+                var meshCollider = clone.AddComponent<MeshCollider>();
 	            meshCollider.sharedMesh = mesh;
                 var eventTrigger = clone.AddComponent<EventTrigger>();
-	            var entry1 = new EventTrigger.Entry
+	            var pointerEnterEvent = new EventTrigger.Entry
 	            {
 	                eventID = EventTriggerType.PointerEnter
 	            };
-                entry1.callback.AddListener(data =>
+                pointerEnterEvent.callback.AddListener(data =>
                 {
                     var halo = (Behaviour)clone.GetComponent("Halo");
                     halo.enabled = true;
                 });
-	            eventTrigger.triggers.Add(entry1);
-	            var entry2 = new EventTrigger.Entry
+	            eventTrigger.triggers.Add(pointerEnterEvent);
+	            var pointerExitEvent = new EventTrigger.Entry
 	            {
 	                eventID = EventTriggerType.PointerExit
 	            };
-	            entry2.callback.AddListener(data =>
+	            pointerExitEvent.callback.AddListener(data =>
 	            {
 	                var halo = (Behaviour)clone.GetComponent("Halo");
 	                halo.enabled = false;
 	            });
-	            eventTrigger.triggers.Add(entry2);
-	            var entry3 = new EventTrigger.Entry
+	            eventTrigger.triggers.Add(pointerExitEvent);
+	            var pointerClickEvent = new EventTrigger.Entry
 	            {
 	                eventID = EventTriggerType.PointerClick
 	            };
-	            entry3.callback.AddListener(data =>
+	            pointerClickEvent.callback.AddListener(data =>
 	            {
 	                player.transform.position = clone.transform.position;
 	                player.transform.localPosition = new Vector3(player.transform.localPosition.x, player.transform.localPosition.y + 1.5f, player.transform.localPosition.z);
 	            });
-	            eventTrigger.triggers.Add(entry3);
+	            eventTrigger.triggers.Add(pointerClickEvent);
             }
 	    }
     }
