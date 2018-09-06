@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Play : MonoBehaviour {
+public class Play : MonoBehaviour
+{
+    private List<Behaviour> _lights;
 
     // Use this for initialization
     void Start () {
+        _lights = GameObject
+            .FindGameObjectsWithTag("Lights")
+            .Select(go => go.GetComponent<Behaviour>())
+            .ToList();
+
         SetGazedAt(false);
     }
 	
@@ -34,6 +40,11 @@ public class Play : MonoBehaviour {
             else
             {
                 texture.Pause();
+            }
+            foreach (var l1 in _lights)
+            {
+                var light1 = (Light)l1;
+                light1.intensity = texture.IsPaused ? 2f : 0.2f;
             }
         }
     }
