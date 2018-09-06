@@ -194,7 +194,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
-  m_Intensity: 2
+  m_Intensity: 4
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -337,7 +337,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
-  m_Intensity: 2
+  m_Intensity: 4
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -439,7 +439,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
-  m_Intensity: 2
+  m_Intensity: 4
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -551,7 +551,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
-  m_Intensity: 2
+  m_Intensity: 4
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -794,7 +794,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
-  m_Intensity: 2
+  m_Intensity: 4
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1021,7 +1021,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 0.7607844, g: 0.7607844, b: 0.7607844, a: 1}
-  m_Intensity: 2
+  m_Intensity: 4
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -1471,7 +1471,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 171526, guid: 60270cf52a5e94998a5a335989159738, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60270cf52a5e94998a5a335989159738, type: 2}
@@ -1820,7 +1820,6 @@ GameObject:
   - component: {fileID: 2049542457}
   - component: {fileID: 2049542456}
   - component: {fileID: 2049542460}
-  - component: {fileID: 2049542461}
   - component: {fileID: 2049542463}
   - component: {fileID: 2049542462}
   - component: {fileID: 2049542464}
@@ -1919,17 +1918,6 @@ MonoBehaviour:
   initialResolution: 4096
   adjustAspectRatio: 0
   useSecurePath: 0
---- !u!114 &2049542461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2049542455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c251099de3ca0b4fba73178d9cf145a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2049542462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2005,7 +1993,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158405297e7ee8346a5f14a416540edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cinema: {fileID: 163957970}
 --- !u!122 &2049542464
 Halo:
   m_ObjectHideFlags: 0

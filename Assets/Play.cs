@@ -14,6 +14,8 @@ public class Play : MonoBehaviour
             .Select(go => go.GetComponent<Behaviour>())
             .ToList();
 
+        GetComponent<GvrVideoPlayerTexture>().SetOnVideoEventCallback(OnVideoReady);
+
         SetGazedAt(false);
     }
 	
@@ -26,6 +28,14 @@ public class Play : MonoBehaviour
     {
         var halo = (Behaviour)GetComponent("Halo");
         halo.enabled = gazedAt;
+    }
+
+    private void OnVideoReady(int eventId)
+    {
+        if (eventId == (int)GvrVideoPlayerTexture.VideoEvents.VideoReady)
+        {
+            OnPlay(null);
+        }
     }
 
     public void OnPlay(BaseEventData data)
@@ -44,7 +54,7 @@ public class Play : MonoBehaviour
             foreach (var l1 in _lights)
             {
                 var light1 = (Light)l1;
-                light1.intensity = texture.IsPaused ? 2f : 0.2f;
+                light1.intensity = texture.IsPaused ? 4f : 0.2f;
             }
         }
     }
